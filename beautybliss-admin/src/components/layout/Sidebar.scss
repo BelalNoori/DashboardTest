@@ -1,0 +1,21 @@
+.wrapper {
+    display: flex;
+}
+
+.sidebar-left {
+    width: 300px;
+    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    flex-shrink: 0;
+    border-right: 1px solid #3d363684;
+}
+
+.sidebar-right {
+    background-color: #f8f2eb;
+    flex: 1;
+}

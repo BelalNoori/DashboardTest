@@ -1,10 +1,12 @@
 
 import './App.css'
+import './fonts.scss'
+import Sidebar from './components/layout/Sidebar'
 
 function App() {
   return (
     <div>
-      <h1>Beautybliss Admin</h1>
+      <Sidebar />
     </div>
   )
 }
