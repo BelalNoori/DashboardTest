@@ -1,6 +1,7 @@
 import './Sidebar.scss'
 import SidebarHeader from './SidebarHeader'
 import SidebarNav from './SidebarNav'
+import SidebarFooter from './SidebarFooter'
 
 function Sidebar() {
     return (
@@ -9,6 +10,7 @@ function Sidebar() {
                 <div className="sidebar-left">       
                     <SidebarHeader />
                     <SidebarNav />
+                    <SidebarFooter />
                 </div>
                 <div className="sidebar-right"></div>
             </div>

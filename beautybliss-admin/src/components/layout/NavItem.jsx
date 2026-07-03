@@ -1,12 +1,10 @@
 
-function NavItem() {
+function NavItem({ label, isActive, onClick }) {
     return (
-        <nav>
-            <button className="nav-item">Preisliste</button>
-            <button className="nav-item">Über Uns</button>
-            <button className="nav-item">Öffnungszeiten</button>
-        </nav>
-    )
+        <button className={`nav-item ${isActive ? 'active' : ''}`} 
+        onClick={onClick}>{label}
+        </button>
+    );
 }
 
 export default NavItem

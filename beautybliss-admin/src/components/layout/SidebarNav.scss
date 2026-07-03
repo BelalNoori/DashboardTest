@@ -3,21 +3,19 @@ p {
 }
 
 nav {
-display: flex;
-flex-direction: column;
-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .nav-item {
     background: transparent;
-    color: white;
     font-size: 18px;
     font-weight: 500;
     border: none;
     padding: 10px 12px;
     border-radius: 10px;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
     width: 100%;
     text-align: left;
 
@@ -25,8 +23,48 @@ gap: 10px;
         background-color: #221f1f;
         color: white;
     }
-    
-    &:hover {
-        background-color: #b5a8a8;
+}
+
+.footer {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid #48484871;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .avatarFooter {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 1px solid #48484871;
+        background-color: #f8ebeb;
+        color: black;
+        font-size: 20px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.who-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    font-family: 'Cormorant Garamond', serif;
+
+    .who-name {
+        color: red;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .who-role {
+        color: black;
+        font-size: 16px;
+        font-weight: 400;
     }
 }

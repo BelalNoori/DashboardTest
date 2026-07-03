@@ -1,4 +1,4 @@
-import './SidebarHeader.scss'
+import './SidebarHeader.scss';
 
 function SidebarHeader() {
     return (
