@@ -2,14 +2,14 @@
 import './App.css'
 import './fonts.scss'
 import Sidebar from './components/layout/Sidebar'
-import Dashboard from './components/layout/dashboard'
+import MainBoard from './components/layout/MainBoard'
 
 function App() {
   return (
     <div className="app-layout">
       <Sidebar />
       <main>
-        <Dashboard />
+        <MainBoard />
       </main>
     </div>
   )
