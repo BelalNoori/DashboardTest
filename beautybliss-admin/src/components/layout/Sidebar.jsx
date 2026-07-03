@@ -12,7 +12,6 @@ function Sidebar() {
                     <SidebarNav />
                     <SidebarFooter />
                 </div>
-                <div className="sidebar-right"></div>
             </div>
         </>
     )

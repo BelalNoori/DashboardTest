@@ -54,17 +54,16 @@ nav {
     justify-content: center;
     flex-direction: column;
     gap: 5px;
-    font-family: 'Cormorant Garamond', serif;
 
     .who-name {
         color: red;
         font-size: 20px;
-        font-weight: 700;
+        font-weight: 800;
     }
 
     .who-role {
         color: black;
         font-size: 16px;
-        font-weight: 400;
+        font-weight: 500;
     }
 }

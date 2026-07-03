@@ -4,3 +4,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.app-layout {
+    display: flex;
+
+    main {
+        flex: 1;
+        background-color: #f8f2eb;
+    }
+}
