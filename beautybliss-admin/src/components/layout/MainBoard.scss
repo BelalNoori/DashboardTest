@@ -1,38 +1,84 @@
 .mainboard {
-    padding: 50px;
-    width: 100%;
-    max-width: 1440px;
+  padding: 50px;
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 h1 {
-    color: #221f1f;
-    font-size: 44px;
-    font-weight: 500;
-    margin: 6 0 0;
+  color: #221f1f;
+  font-size: 44px;
+  font-weight: 500;
+  margin: 6 0 0;
 }
 
 .topbar-title {
-    color: #333;
-    font-size: 20px;
+  color: #3333336e;
+  font-size: 17px;
+  text-transform: uppercase;
+}
+
+.topbar-bottom {
+  color: #3333336e;
+  font-size: 19px;
 }
 
 .topbar-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .topbar-btn {
+  padding: 10px 16px;
+  background-color: #221f1f;
+  color: white;
+  border: none;
+  border-radius: 99px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 140ms ease;
+
+  &:hover {
+    background-color: #333;
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #48484845;
+  padding: 24px;
+  box-shadow: 0 0 2px #48484871;
+
+  .card-btn {
     padding: 10px 16px;
-    background-color: #221f1f;
-    color: white;
+    background: transparent;
+    color: black;
     border: none;
     border-radius: 99px;
     cursor: pointer;
     font-size: 16px;
     transition: all 140ms ease;
-    
+
     &:hover {
-        background-color: #333;
+      background-color: #f8ebeb;
     }
+  }
+
+  .card-bottom {
+    font-size: 16px;
+    color: #3333336e;
+    letter-spacing: 0.5px;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: 220px 1 fr;
+    gap: 28px;
+    align-items: start;
+    margin-top: 20px;
+  }
 }
