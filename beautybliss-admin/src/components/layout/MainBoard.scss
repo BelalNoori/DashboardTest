@@ -1,7 +1,38 @@
 .mainboard {
     padding: 50px;
+    width: 100%;
+    max-width: 1440px;
 }
 
 h1 {
-    color: red;
+    color: #221f1f;
+    font-size: 44px;
+    font-weight: 500;
+    margin: 6 0 0;
+}
+
+.topbar-title {
+    color: #333;
+    font-size: 20px;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar-btn {
+    padding: 10px 16px;
+    background-color: #221f1f;
+    color: white;
+    border: none;
+    border-radius: 99px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 140ms ease;
+    
+    &:hover {
+        background-color: #333;
+    }
 }
