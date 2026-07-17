@@ -76,9 +76,63 @@ h1 {
 
   .card-grid {
     display: grid;
-    grid-template-columns: 220px 1 fr;
+    grid-template-columns: 220px 1fr;
     gap: 28px;
     align-items: start;
     margin-top: 20px;
+
+    .btn-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .btn-chip {
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 0;
+      background: transparent;
+      text-align: left;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      color: #453b35;
+
+      &.active {
+        font-weight: 600;
+        background: #f8e2dd;
+        color: #4d271d;
+      }
+
+      &:hover {
+        background: #f8e2dd79;
+      }
+    }
+
+    .service-table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th {
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: #796f69;
+        font-weight: 500;
+        text-align: left;
+        padding: 8px 12px 12px;
+        border-bottom: 1px solid #ded6ce;
+      }
+    }
+
+    tr {
+      display: table-row;
+      vertical-align: inherit;
+      unicode-bidi: isolate;
+      border-color: inherit;
+    }
   }
 }

@@ -1,4 +1,5 @@
 import './MainBoard.scss'
+import { useState } from "react"
 
 function MainBoard() {
     return (
@@ -23,6 +24,7 @@ function Topbar() {
 }
 
 function Card() {
+    const [active, setActive] = useState("Services");
     return (
         <>
             <div className="card">
@@ -35,8 +37,51 @@ function Card() {
                 </div>
 
                 <div className="card-grid">
-                
-            </div>
+                    <div className="btn-list">
+                        <button className={`btn-chip ${active === "hair" ? "active" : ""}`}
+                            onClick={() => setActive("hair")}>
+                            <span>Haare & Styling</span>
+                            <span>5</span>
+                        </button>
+                        <button className={`btn-chip ${active === "faceclean" ? "active" : ""}`}
+                            onClick={() => setActive("faceclean")}>
+                            <span>Gesichtsbehandlung</span>
+                            <span>4</span>
+                        </button>
+                        <button className={`btn-chip ${active === "nails" ? "active" : ""}`}
+                            onClick={() => setActive("nails")}>
+                            <span>Nägel</span>
+                            <span>4</span>
+                        </button>
+                        <button className={`btn-chip ${active === "eyebrows" ? "active" : ""}`}
+                            onClick={() => setActive("eyebrows")}>
+                            <span>Wimpern & Augenbrauen</span>
+                            <span>4</span>
+                        </button>
+                        <button className={`btn-chip ${active === "wellness" ? "active" : ""}`}
+                            onClick={() => setActive("wellness")}>
+                            <span>Wellness</span>
+                            <span>3</span>
+                        </button>
+                    </div>
+                    <div className="service-table">
+                        <thead>
+                            <tr>
+                                <th style={{width: "55%"}}>Leistung</th>
+                                <th style={{width: "20%"}}>Dauer</th>
+                                <th style={{width: "25%", textAlign: "right"}}>Preis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div className="service-n">Damenhaarschniit</div>
+                                    <div className="service-desc">Beratung, Waschen, Schnitt, Föhnen & Styling</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </div>
+                </div>
             </div>
         </>
     )
