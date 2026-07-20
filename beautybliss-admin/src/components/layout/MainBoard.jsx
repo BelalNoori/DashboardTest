@@ -64,23 +64,97 @@ function Card() {
                             <span>3</span>
                         </button>
                     </div>
-                    <div className="service-table">
+                    <table className="service-table">
                         <thead>
                             <tr>
-                                <th style={{width: "55%"}}>Leistung</th>
-                                <th style={{width: "20%"}}>Dauer</th>
-                                <th style={{width: "25%", textAlign: "right"}}>Preis</th>
+                                <th style={{ width: "55%" }}>Leistung</th>
+                                <th style={{ width: "20%" }}>Dauer</th>
+                                <th style={{ width: "25%", textAlign: "right" }}>Preis</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
-                                    <div className="service-n">Damenhaarschniit</div>
+                                    <div className="service-name">Damenhaarschniit</div>
                                     <div className="service-desc">Beratung, Waschen, Schnitt, Föhnen & Styling</div>
+                                </td>
+                                <td>
+                                    <div className="service-duration">
+                                        60Min.
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="service-price">
+                                        75 €
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="service-name">Damenhaarschniit</div>
+                                    <div className="service-desc">Beratung, Waschen, Schnitt, Föhnen & Styling</div>
+                                </td>
+                                <td>
+                                    <div className="service-duration">
+                                        60Min.
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="service-price">
+                                        75 €
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="service-name">Damenhaarschniit</div>
+                                    <div className="service-desc">Beratung, Waschen, Schnitt, Föhnen & Styling</div>
+                                </td>
+                                <td>
+                                    <div className="service-duration">
+                                        60Min.
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="service-price">
+                                        75 €
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="service-name">Damenhaarschniit</div>
+                                    <div className="service-desc">Beratung, Waschen, Schnitt, Föhnen & Styling</div>
+                                </td>
+                                <td>
+                                    <div className="service-duration">
+                                        60Min.
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="service-price">
+                                        75 €
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="service-name">Hochsteckfrisur</div>
+                                    <div className="service-desc">Beratung, Waschen, Schnitt, Föhnen & Styling</div>
+                                </td>
+                                <td>
+                                    <div className="service-duration">
+                                        60Min.
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="service-price">
+                                        75 €
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
-                    </div>
+                    </table>
                 </div>
             </div>
         </>
