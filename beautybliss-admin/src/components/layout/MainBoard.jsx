@@ -1,5 +1,6 @@
 import './MainBoard.scss'
 import { useState } from "react"
+import ServiceIcon from './ServiceIcon'
 
 function MainBoard() {
     return (
@@ -31,7 +32,10 @@ function Card() {
                 <div className="topbar">
                     <div className="topbar-actions">
                         <h2>Leistungen & Preise</h2>
-                        <button className="card-btn">Preise bearbeiten</button>
+                        <button className="card-btn">
+                            <ServiceIcon type="edit" />
+                            Preise bearbeiten
+                        </button>
                     </div>
                     <p className="card-bottom">Alle Preise in EUR - Stand 2026</p>
                 </div>

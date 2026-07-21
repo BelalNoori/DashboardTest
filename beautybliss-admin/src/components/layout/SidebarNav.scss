@@ -18,10 +18,18 @@ nav {
     cursor: pointer;
     width: 100%;
     text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
     &.active {
         background-color: #221f1f;
         color: white;
+
+        // Icons weiß im aktiven Zustand
+        .service-icon .icon-img {
+            filter: brightness(0) invert(1);
+        }
     }
 }
 

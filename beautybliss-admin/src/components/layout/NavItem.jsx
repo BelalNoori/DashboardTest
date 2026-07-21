@@ -1,8 +1,12 @@
+import ServiceIcon from './ServiceIcon'
 
-function NavItem({ label, isActive, onClick }) {
+// NavItem Komponente mit optionaler Icon-Unterstützung
+function NavItem({ label, isActive, onClick, icon }) {
     return (
-        <button className={`nav-item ${isActive ? 'active' : ''}`} 
-        onClick={onClick}>{label}
+        <button className={`nav-item ${isActive ? 'active' : ''}`}
+        onClick={onClick}>
+            {icon && <ServiceIcon type={icon} />}
+            {label}
         </button>
     );
 }

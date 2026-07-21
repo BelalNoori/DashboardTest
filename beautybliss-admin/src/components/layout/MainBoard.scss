@@ -62,6 +62,9 @@ h1 {
     cursor: pointer;
     font-size: 16px;
     transition: all 140ms ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
     &:hover {
       background-color: #f8ebeb;

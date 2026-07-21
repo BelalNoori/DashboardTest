@@ -1,0 +1,23 @@
+.service-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+
+  .icon-img {
+    width: 20px;
+    height: 20px;
+  }
+
+  // Kleineres Icon für Nav-Items
+  .nav-item & {
+    width: 32px;
+    height: 32px;
+
+    .icon-img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
