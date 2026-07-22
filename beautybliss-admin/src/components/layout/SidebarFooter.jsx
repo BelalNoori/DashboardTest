@@ -1,5 +1,6 @@
 import './SidebarNav.scss';
 
+
 function SidebarFooter() {
     return (
         <div className="footer">

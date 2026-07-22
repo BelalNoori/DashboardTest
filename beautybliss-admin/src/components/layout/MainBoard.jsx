@@ -25,7 +25,7 @@ function Topbar() {
 }
 
 function Card() {
-    const [active, setActive] = useState("Services");
+    const [active, setActive] = useState("handpflege");
     return (
         <>
             <div className="card">
@@ -42,29 +42,39 @@ function Card() {
 
                 <div className="card-grid">
                     <div className="btn-list">
-                        <button className={`btn-chip ${active === "hair" ? "active" : ""}`}
-                            onClick={() => setActive("hair")}>
-                            <span>Haare & Styling</span>
+                        <button className={`btn-chip ${active === "handpflege" ? "active" : ""}`}
+                            onClick={() => setActive("handpflege")}>
+                            <span>Handpflege</span>
+                            <span>3</span>
+                        </button>
+                        <button className={`btn-chip ${active === "fusspflege" ? "active" : ""}`}
+                            onClick={() => setActive("fusspflege")}>
+                            <span>Medizinische Fußpflege</span>
+                            <span>3</span>
+                        </button>
+                        <button className={`btn-chip ${active === "gesicht" ? "active" : ""}`}
+                            onClick={() => setActive("gesicht")}>
+                            <span>Gesichtsbehandlungen</span>
+                            <span>2</span>
+                        </button>
+                        <button className={`btn-chip ${active === "haarentfernung" ? "active" : ""}`}
+                            onClick={() => setActive("haarentfernung")}>
+                            <span>Haarentfernung</span>
                             <span>5</span>
                         </button>
-                        <button className={`btn-chip ${active === "faceclean" ? "active" : ""}`}
-                            onClick={() => setActive("faceclean")}>
-                            <span>Gesichtsbehandlung</span>
-                            <span>4</span>
-                        </button>
-                        <button className={`btn-chip ${active === "nails" ? "active" : ""}`}
-                            onClick={() => setActive("nails")}>
-                            <span>Nägel</span>
-                            <span>4</span>
-                        </button>
-                        <button className={`btn-chip ${active === "eyebrows" ? "active" : ""}`}
-                            onClick={() => setActive("eyebrows")}>
+                        <button className={`btn-chip ${active === "wimpern" ? "active" : ""}`}
+                            onClick={() => setActive("wimpern")}>
                             <span>Wimpern & Augenbrauen</span>
-                            <span>4</span>
+                            <span>7</span>
                         </button>
-                        <button className={`btn-chip ${active === "wellness" ? "active" : ""}`}
-                            onClick={() => setActive("wellness")}>
-                            <span>Wellness</span>
+                        <button className={`btn-chip ${active === "wimpernverlaengerung" ? "active" : ""}`}
+                            onClick={() => setActive("wimpernverlaengerung")}>
+                            <span>Wimpernverlängerung</span>
+                            <span>6</span>
+                        </button>
+                        <button className={`btn-chip ${active === "microblading" ? "active" : ""}`}
+                            onClick={() => setActive("microblading")}>
+                            <span>Microblading</span>
                             <span>3</span>
                         </button>
                     </div>
@@ -77,86 +87,23 @@ function Card() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div className="service-name">Damenhaarschniit</div>
-                                    <div className="service-desc">Beratung, Waschen, Schnitt, Föhnen & Styling</div>
-                                </td>
-                                <td>
-                                    <div className="service-duration">
-                                        60Min.
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="service-price">
-                                        75 €
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="service-name">Damenhaarschniit</div>
-                                    <div className="service-desc">Beratung, Waschen, Schnitt, Föhnen & Styling</div>
-                                </td>
-                                <td>
-                                    <div className="service-duration">
-                                        60Min.
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="service-price">
-                                        75 €
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="service-name">Damenhaarschniit</div>
-                                    <div className="service-desc">Beratung, Waschen, Schnitt, Föhnen & Styling</div>
-                                </td>
-                                <td>
-                                    <div className="service-duration">
-                                        60Min.
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="service-price">
-                                        75 €
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="service-name">Damenhaarschniit</div>
-                                    <div className="service-desc">Beratung, Waschen, Schnitt, Föhnen & Styling</div>
-                                </td>
-                                <td>
-                                    <div className="service-duration">
-                                        60Min.
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="service-price">
-                                        75 €
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="service-name">Hochsteckfrisur</div>
-                                    <div className="service-desc">Beratung, Waschen, Schnitt, Föhnen & Styling</div>
-                                </td>
-                                <td>
-                                    <div className="service-duration">
-                                        60Min.
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="service-price">
-                                        75 €
-                                    </div>
-                                </td>
-                            </tr>
+                            {active === "handpflege" && <>
+                                <tr>
+                                    <td><div className="service-n">Klassische Maniküre</div></td>
+                                    <td><div className="service-duration">–</div></td>
+                                    <td><div className="service-price">30 €</div></td>
+                                </tr>
+                                <tr>
+                                    <td><div className="service-n">Lackieren</div></td>
+                                    <td><div className="service-duration">–</div></td>
+                                    <td><div className="service-price">7 €</div></td>
+                                </tr>
+                                <tr>
+                                    <td><div className="service-n">Lackentfernung</div></td>
+                                    <td><div className="service-duration">–</div></td>
+                                    <td><div className="service-price">2,50 €</div></td>
+                                </tr>
+                            </>}
                         </tbody>
                     </table>
                 </div>
