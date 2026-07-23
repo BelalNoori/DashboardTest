@@ -1,6 +1,7 @@
 import './MainBoard.scss'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ServiceIcon from './ServiceIcon'
+import { supabase } from '../../supabase'
 
 function MainBoard() {
     return (
@@ -17,7 +18,7 @@ function Topbar() {
             <p className="topbar-title">Beauty Bliss · Salon</p>
             <div className="topbar-actions">
                 <h1>Preisliste</h1>
-                <button className="topbar-btn">+ Neue Leistung</button>
+                <button className="topbar-btn" >+ Neue Leistung</button>
             </div>
             <p className="topbar-bottom">Alle Lesitungen, Dauer und Preise auf einen Blick.</p>
         </div>
@@ -25,14 +26,96 @@ function Topbar() {
 }
 
 function Card() {
-    const [active, setActive] = useState("handpflege");
+    const [active, setActive] = useState("handpflege")
+    const [services, setServices] = useState([])
+    const [showEditModal, setShowEditModal] = useState(false)
+    const [newService, setNewService] = useState({
+        name: '',
+        description: '',
+        duration: '',
+        price: '',
+        category: active
+    })
+    const [editService, setEditService] = useState(null)
+
+    useEffect(() => {
+        const fetchServices = async () => {
+            const { data, error } = await supabase
+                .from('services')
+                .select('*')
+                .eq('category', active)
+                .order('sort_order', { ascending: true })
+
+            if (error) console.error(error)
+            else setServices(data)
+        }
+
+        fetchServices()
+    }, [active])
+
+    const handleAddService = async () => {
+        const { error } = await supabase
+            .from('services')
+            .insert([newService])
+
+        if (error) {
+            console.error(error)
+        } else {
+            setShowEditModal(false)
+            const { data } = await supabase
+                .from('services')
+                .select('*')
+                .eq('category', active)
+                .order('sort_order', { ascending: true })
+            setServices(data)
+        }
+    }
+
+    const handleDelete = async (id) => {
+        const { error } = await supabase
+            .from('services')
+            .delete()
+            .eq('id', id)
+
+        if (error) {
+            console.error(error)
+        } else {
+            setServices(services.filter(s => s.id !== id))
+        }
+    }
+
+    const handleUpdate = async () => {
+        const { error } = await supabase
+            .from('services')
+            .update({
+                name: editService.name,
+                description: editService.description,
+                duration: editService.duration,
+                price: editService.price,
+                category: editService.category
+            })
+            .eq('id', editService.id)
+
+        if (error) {
+            console.error(error)
+        } else {
+            setEditService(null)
+            const { data } = await supabase
+                .from('services')
+                .select('*')
+                .eq('category', active)
+                .order('sort_order', { ascending: true })
+            setServices(data)
+        }
+    }
+
     return (
         <>
             <div className="card">
                 <div className="topbar">
                     <div className="topbar-actions">
                         <h2>Leistungen & Preise</h2>
-                        <button className="card-btn">
+                        <button className="card-btn" onClick={() => setShowEditModal(true)}>
                             <ServiceIcon type="edit" />
                             Preise bearbeiten
                         </button>
@@ -87,26 +170,115 @@ function Card() {
                             </tr>
                         </thead>
                         <tbody>
-                            {active === "handpflege" && <>
-                                <tr>
-                                    <td><div className="service-n">Klassische Maniküre</div></td>
-                                    <td><div className="service-duration">–</div></td>
-                                    <td><div className="service-price">30 €</div></td>
+                            {services.map((service) => (
+                                <tr key={service.id}>
+                                    <td>
+                                        <div className="service-name">{service.name}</div>
+                                        {service.description && <div className="service-desc">{service.description}</div>}
+                                    </td>
+                                    <td><div className="service-duration">{service.duration || '–'}</div></td>
+                                    <td><div className="service-price">{service.price} €</div></td>
+                                    <td>
+                                        <button onClick={() => setEditService(service)}>✏️</button>
+                                        <button onClick={() => handleDelete(service.id)}>🗑️</button>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td><div className="service-n">Lackieren</div></td>
-                                    <td><div className="service-duration">–</div></td>
-                                    <td><div className="service-price">7 €</div></td>
-                                </tr>
-                                <tr>
-                                    <td><div className="service-n">Lackentfernung</div></td>
-                                    <td><div className="service-duration">–</div></td>
-                                    <td><div className="service-price">2,50 €</div></td>
-                                </tr>
-                            </>}
+                            ))}
                         </tbody>
                     </table>
                 </div>
+
+                {showEditModal && (
+                    <div className="modal-overlay" onClick={() => setShowEditModal(false)}>
+                        <div className="modal" onClick={(e) => e.stopPropagation()}>
+                            <h2>Leistung bearbeiten</h2>
+                            <input
+                                type="text"
+                                placeholder="Name"
+                                value={newService.name}
+                                onChange={(e) => setNewService({ ...newService, name: e.target.value })}
+                            />
+                            <textarea
+                                placeholder="Beschreibung (optional)"
+                                value={newService.description}
+                                onChange={(e) => setNewService({ ...newService, description: e.target.value })}
+                            />
+                            <input
+                                type="text"
+                                placeholder="Dauer (optional)"
+                                value={newService.duration}
+                                onChange={(e) => setNewService({ ...newService, duration: e.target.value })}
+                            />
+                            <input
+                                type="number"
+                                placeholder="Preis"
+                                value={newService.price}
+                                onChange={(e) => setNewService({ ...newService, price: e.target.value })}
+                            />
+                            <select
+                                value={newService.category}
+                                onChange={(e) => setNewService({ ...newService, category: e.target.value })}
+                            >
+                                <option value="handpflege">Handpflege</option>
+                                <option value="fusspflege">Medizinische Fußpflege</option>
+                                <option value="gesicht">Gesichtsbehandlungen</option>
+                                <option value="haarentfernung">Haarentfernung</option>
+                                <option value="wimpern">Wimpern & Augenbrauen</option>
+                                <option value="wimpernverlaengerung">Wimpernverlängerung</option>
+                                <option value="microblading">Microblading</option>
+                            </select>
+
+                            <button onClick={handleAddService}>Speichern</button>
+                            <button onClick={() => setShowEditModal(false)}>Abbrechen</button>
+                        </div>
+                    </div>
+                )}
+
+                {editService && (
+                    <div className="modal-overlay" onClick={() => setEditService(null)}>
+                        <div className="modal" onClick={(e) => e.stopPropagation()}>
+                            <h2>Leistung bearbeiten</h2>
+                            <input
+                                type="text"
+                                placeholder="Name"
+                                value={editService.name}
+                                onChange={(e) => setEditService({ ...editService, name: e.target.value })}
+                            />
+                            <textarea
+                                placeholder="Beschreibung (optional)"
+                                value={editService.description || ''}
+                                onChange={(e) => setEditService({ ...editService, description: e.target.value })}
+                            />
+                            <input
+                                type="text"
+                                placeholder="Dauer (optional)"
+                                value={editService.duration || ''}
+                                onChange={(e) => setEditService({ ...editService, duration: e.target.value })}
+                            />
+                            <input
+                                type="number"
+                                placeholder="Preis"
+                                value={editService.price}
+                                onChange={(e) => setEditService({ ...editService, price: e.target.value })}
+                            />
+                            <select
+                                value={editService.category}
+                                onChange={(e) => setEditService({ ...editService, category: e.target.value })}
+                            >
+                                <option value="handpflege">Handpflege</option>
+                                <option value="fusspflege">Medizinische Fußpflege</option>
+                                <option value="gesicht">Gesichtsbehandlungen</option>
+                                <option value="haarentfernung">Haarentfernung</option>
+                                <option value="wimpern">Wimpern & Augenbrauen</option>
+                                <option value="wimpernverlaengerung">Wimpernverlängerung</option>
+                                <option value="microblading">Microblading</option>
+                            </select>
+
+                            <button onClick={handleUpdate}>Speichern</button>
+                            <button onClick={() => setEditService(null)}>Abbrechen</button>
+                        </div>
+                    </div>
+                )}
             </div>
         </>
     )
